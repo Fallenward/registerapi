@@ -22,7 +22,7 @@ class AuthController extends Controller
 
     public function checkuser(Request $request)
     {
-        $user = User::where('phone_number', $request->phone)->first();
+        $user = User::where('phone', $request->phone)->first();
 
         if (!$user) {
             $newuser = new User();
@@ -89,7 +89,7 @@ class AuthController extends Controller
 
     public function checkOtp(Request $request,)
     {
-        $user = User::where('phone_number',$request->phone)->first();
+        $user = User::where('phone',$request->phone)->first();
         if ($user != null) {
             if ($user->otp == $request->otp) {
                 $user->otp = "ok";
@@ -107,7 +107,7 @@ class AuthController extends Controller
     public function setPassword(Request $request)
     {
 
-        $user = User::where('phone_number',$request->phone)->first();
+        $user = User::where('phone',$request->phone)->first();
         $user->password = Hash::make($request->password);
         $user->name = $request->name;
         $user->save();
