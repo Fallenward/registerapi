@@ -15,4 +15,4 @@ Route::post('check-otp', [AuthController::class, 'checkOtp']);
 
 Route::post('set-info', [AuthController::class, 'setPassword']);
 
-Route::post('ccheck-auth', [AuthController::class, 'checkauth']);
+Route::post('check-auth', [AuthController::class, 'checkauth']);
