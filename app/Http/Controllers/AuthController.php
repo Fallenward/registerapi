@@ -19,17 +19,10 @@ use Tymon\JWTAuth\Facades\JWTAuth; // for JWT token
 
 class AuthController extends Controller
 {
-    public function generateOtp($length = 6) {
-        $otp = '';
-        for ($i = 0; $i < $length; $i++) {
-            $otp .= rand(0, 9);
-        }
-        return $otp;
-    }
 
-    public function checkuser(Request $request, $phone_number)
+    public function checkuser(Request $request)
     {
-        $user = User::where('phone_number', $phone_number)->first();
+        $user = User::where('phone_number', $request->phone)->first();
 
         if (!$user) {
             $newuser = new User();
